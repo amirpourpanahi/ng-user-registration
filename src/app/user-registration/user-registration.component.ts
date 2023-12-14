@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {MatSelectModule} from '@angular/material/select';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-user-registration',
@@ -15,7 +11,7 @@ import { Router } from '@angular/router';
 export class UserRegistrationComponent implements OnInit{
   registrationForm: FormGroup;
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private router: Router, private userService: UserService) {}
 
   ngOnInit() {
     this.registrationForm = new FormGroup({
@@ -27,8 +23,7 @@ export class UserRegistrationComponent implements OnInit{
   }
 
   onSubmit() {
-    this.http
-      .get('https://mocki.io/v1/7f434df6-a4ac-4817-ab7c-dd39a564d01d', this.registrationForm.value)
+    this.userService.RegisterNewUser(this.registrationForm.value)
       .subscribe(responseData => {
         if(responseData['success']){
           this.router.navigate(['profile']);

@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from '../user.service';
+import { User } from '../shared/user.model';
 
 @Component({
   selector: 'app-profile',
@@ -8,17 +9,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent {
-  user: {
-    name: string,
-    email: string,
-    bio: string
-  };
+  user: User;
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private router: Router, private userService: UserService) {}
 
   ngOnInit() {
-    this.http
-      .get('https://mocki.io/v1/611a3036-4420-48a5-b8da-9b461853cdd2')
+    this.userService.getUserProfile()
       .subscribe(responseData => {
         this.user = {
           name: responseData['name'],
