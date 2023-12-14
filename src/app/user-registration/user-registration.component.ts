@@ -28,7 +28,7 @@ export class UserRegistrationComponent implements OnInit{
 
   onSubmit() {
     this.http
-      .get('https://mocki.io/v1/7f434df6-a4ac-4817-ab7c-dd39a564d01d')
+      .get('https://mocki.io/v1/7f434df6-a4ac-4817-ab7c-dd39a564d01d', this.registrationForm.value)
       .subscribe(responseData => {
         if(responseData['success']){
           this.router.navigate(['profile']);

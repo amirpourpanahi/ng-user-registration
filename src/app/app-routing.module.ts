@@ -4,6 +4,7 @@ import { UserRegistrationComponent } from './user-registration/user-registration
 import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/user-registration', pathMatch: 'full' },
   { path: 'user-registration', component: UserRegistrationComponent },
   { path: 'profile', component: ProfileComponent }
 ];
