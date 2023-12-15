@@ -13,6 +13,7 @@ import { UserRegistrationComponent } from './user-registration/user-registration
 import { MatButtonModule } from '@angular/material/button';
 import { ProfileComponent } from './profile/profile.component';
 import { AuthGuard } from './auth-guard.service';
+import { UserService } from './user.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { AuthGuard } from './auth-guard.service';
     MatCardModule,
     MatButtonModule
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
