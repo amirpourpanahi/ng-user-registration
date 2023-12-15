@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
 import { MatButtonModule } from '@angular/material/button';
 import { ProfileComponent } from './profile/profile.component';
+import { AuthGuard } from './auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { ProfileComponent } from './profile/profile.component';
     MatCardModule,
     MatButtonModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
